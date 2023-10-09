@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    /* Add custom CSS styles here */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      font-size: 16px;
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      background-color: #007BFF;
+      color: #fff;
+      border: none;
+      padding: 12px;
+      border-radius: 3px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    p {
+      text-align: center;
+    }
+
+    .error {
+      color: red;
+      font-size: 14px;
+      margin-top: -15px;
+      margin-bottom: 15px;
+    }
+  </style>
+  <script>
+    // Client-side validation
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.querySelector('form');
+      form.addEventListener('submit', (event) => {
+        const username = form.querySelector('input[name="username"]').value.trim();
+        const email = form.querySelector('input[name="email"]').value.trim();
+        const password = form.querySelector('input[name="password"]').value.trim();
+        const firstName = form.querySelector('input[name="first_name"]').value.trim();
+        const lastName = form.querySelector('input[name="last_name"]').value.trim();
+
+        if (!username || !email || !password || !firstName || !lastName) {
+          event.preventDefault(); // Prevent form submission
+          const errorElement = document.querySelector('.error');
+          errorElement.textContent = 'All fields are required.';
+        }
+      });
+    });
+  </script>
+  <title>User Registration</title>
+</head>
+<!-- ... (previous HTML code) -->
+<body>
+  <h1>User Registration</h1>
+  <form action="/register" method="POST">
+    <input type="text" name="username" placeholder="Username" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="password" name="password" placeholder="Password" required>
+    <input type="text" name="first_name" placeholder="First Name" required>
+    <input type="text" name="last_name" placeholder="Last Name" required>
+    <button type="submit">Register</button>
+    <p class="error"></p>
+    <p class="success"></p> <!-- Added success message -->
+  </form>
+  <p>Already have an account? <a href="/">Login</a></p>
+</body>
+</html>
+
+</html>
+ 
